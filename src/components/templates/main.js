@@ -1,20 +1,27 @@
 import React from 'react';
-import { Grid, Container, Paper } from '@material-ui/core';
+import {
+	Grid,
+	Card,
+	CardContent,
+	Container,
+	Typography,
+	Table,
+	TableRow,
+	TableBody,
+	TableCell,
+	TableHead,
+} from '@material-ui/core';
+
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+
+import { AttachmentFilesList } from '../organisms/workSpace';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 	},
-	paper: {
-		marginTop: theme.spacing(1),
-		padding: theme.spacing(3),
-		color: theme.palette.text.secondary,
+	card: {
+		marginBottom: theme.spacing(1),
 	},
 	content: {
 		flexGrow: 1,
@@ -31,24 +38,48 @@ export default function () {
 	return (
 		<Container>
 			<Grid container spacing={2} className={classes.content}>
-				<Grid item xs={8}>
-					<Card>
+				<Grid item xs={7}>
+					<Card className={classes.card}>
 						<CardContent>
-							<Typography className={classes.title} color="success">
+							<Typography className={classes.title}>
 								Рабочая область
 							</Typography>
 						</CardContent>
 					</Card>
 				</Grid>
 
-				<Grid item xs={4}>
-					<Paper className={classes.paper}>
-						1
-					</Paper>
+				<Grid item xs={5}>
+					<Card className={classes.card}>
+						<CardContent>
+							<AttachmentFilesList />
+						</CardContent>
+					</Card>
 
-					<Paper className={classes.paper}>
-						1
-					</Paper>
+					<Card className={classes.card}>
+						<CardContent>
+							<Typography className={classes.title}>
+								Ссылки
+							</Typography>
+
+							<Table>
+								<TableHead>
+									<TableRow>
+										<TableCell>№</TableCell>
+										<TableCell align="right">Ссылка</TableCell>
+										<TableCell align="right">Описание</TableCell>
+									</TableRow>
+								</TableHead>
+
+								<TableBody>
+									<TableRow>
+										<TableCell align="right">1</TableCell>
+										<TableCell align="right">https://google.com</TableCell>
+										<TableCell align="right">Источник для поиска геоданных</TableCell>
+									</TableRow>
+								</TableBody>
+							</Table>
+						</CardContent>
+					</Card>
 				</Grid>
 			</Grid>
 		</Container>
